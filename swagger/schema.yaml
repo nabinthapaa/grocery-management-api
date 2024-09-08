@@ -35,3 +35,17 @@ components:
       example:
         username: username
         password: password
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Indicates the error message
+      example:
+        error: Some error occured
+    AuthResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message of execution

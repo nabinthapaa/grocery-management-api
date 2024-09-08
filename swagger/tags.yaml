@@ -1,0 +1,7 @@
+tags:
+  - name: "User Auth"
+    description: "Registers or logs in user"
+  - name: "User Action"
+    description: "Actions related to user viewing and adding items"
+  - name: "Admin Action"
+    description: "Actions related to admin viewing, adding, removing, updating items"
