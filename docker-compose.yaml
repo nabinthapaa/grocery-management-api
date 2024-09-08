@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: .
+    container_name: grocery_api
+    ports:
+      - 8000:8000
+    environment:
+      TZ: "Asia/Kathmandu"
+    command: npm start
+    develop:
+      watch:
+        - action: sync
+          path: .
+          ignore:
+            - node_modules/
+          target: /app
+        - action: rebuild
+          path: ./package.json
+        - action: rebuild
+          path: ./.env
