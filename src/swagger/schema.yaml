@@ -1,0 +1,37 @@
+components:
+  schemas:
+    Register:
+      type: object
+      required:
+        - username
+        - password
+        - email
+      properties:
+        username:
+          type: string
+          description: username to login with
+        password:
+          type: string
+          description: a strong password
+        email:
+          type: string
+          description: a unique email address
+      example:
+        username: username
+        password: password
+        email: email@personal.com
+    Login:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: username to login with
+        password:
+          type: string
+          description: a strong password
+      example:
+        username: username
+        password: password

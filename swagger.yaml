@@ -1,0 +1,15 @@
+/user/register:
+  post:
+    description:
+      Register:
+        required:
+          - username
+          - password
+          - email
+        properties:
+          username:
+            type: string
+          password:
+            type: string
+          email:
+            type: email

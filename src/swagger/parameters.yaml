@@ -1,0 +1,22 @@
+parameters:
+  schemas:
+    Register:
+      type: object
+      required:
+        - username
+        - password
+        - email
+      properties:
+        username:
+          type: string
+          description: Username to login with
+        password:
+          type: string
+          description: A strong password
+        email:
+          type: string
+          description: A unique email address
+      example:
+        username: username
+        password: password
+        email: email@personal.com

@@ -2,19 +2,32 @@
   "name": "grocery",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "node --watch --experimental-strip-types src/app.ts",
-    "test": "node --experimental-strip-types --test src/*/**.test.ts"
+    "start": "nodemon ./src/app.ts",
+    "test": "node --experimental-strip-types --env-file=.env --test src/*/**.test.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.19.2"
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "glob": "^11.0.0",
+    "multer": "^1.4.5-lts.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-dist": "^5.17.14",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21"
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^4.17.21",
+    "@types/glob": "^8.1.0",
+    "@types/multer": "^1.4.12",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.6",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
