@@ -14,10 +14,12 @@
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "glob": "^11.0.0",
+    "http-status-codes": "^2.3.0",
     "multer": "^1.4.5-lts.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-dist": "^5.17.14",
     "swagger-ui-express": "^5.0.1",
+    "winston": "^3.14.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {

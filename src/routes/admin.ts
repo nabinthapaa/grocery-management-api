@@ -118,7 +118,7 @@ router.delete("/remove");
 
 /**
  * @swagger
- * /user/update:
+ * /admin/update:
  *   patch:
  *    summary: Allows admin to update the details of existing items
  *    tags: ['Admin Action']
@@ -150,7 +150,7 @@ router.put("/update");
 
 /**
  * @swagger
- * /user/manage:
+ * /admin/manage:
  *   post:
  *    summary: Allows admin to manage the items in database
  *    tags: ['Admin Action']

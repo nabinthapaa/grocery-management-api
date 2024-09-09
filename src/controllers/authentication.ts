@@ -1,20 +1,8 @@
 import { Request, Response } from "express";
 import { AuthenticationService } from "../services";
 import { AuthResponse, LoginData, RegisterData } from "../interfaces";
-/*
-P = core.ParamsDictionary, 
-ResBody = any, 
-ReqBody = any, 
-ReqQuery = qs.ParsedQs, 
-Locals extends Record<string, any> = Record<string, any>
-*/
 
-/*
-ResBody = any, 
-Locals extends Record<string, any> = Record<string, any>
-*/
-
-export function createUser(
+export function register(
   req: Request<any, AuthResponse, RegisterData>,
   res: Response<AuthResponse>,
 ) {

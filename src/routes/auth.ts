@@ -1,4 +1,9 @@
 import { Router } from "express";
+import { AuthenticationController } from "../controllers";
+import { LoginData, RegisterData } from "../interfaces";
+import { validateRequestBody } from "../middlewares";
+import { LoginSchema, RegisterSchema } from "../Schemas/Authentication";
+import { requestHandler } from "../utils/requestHandler";
 
 const router = Router();
 
@@ -32,12 +37,11 @@ const router = Router();
  *            example:
  *              error: User already exists
  */
-router.post("/register", (req, res) => {
-  console.log(req.body);
-  return res.status(200).json({
-    ...req.body,
-  });
-});
+router.post(
+  "/register",
+  validateRequestBody<RegisterData>(RegisterSchema),
+  requestHandler(AuthenticationController.register),
+);
 
 /**
  * @swagger
@@ -70,11 +74,10 @@ router.post("/register", (req, res) => {
  *              error: Invalid credentials provided
  *
  */
-router.post("/login", (req, res) => {
-  console.log(req.body);
-  return res.status(200).json({
-    ...req.body,
-  });
-});
+router.post(
+  "/login",
+  validateRequestBody<LoginData>(LoginSchema),
+  requestHandler(AuthenticationController.login),
+);
 
 export default router;
