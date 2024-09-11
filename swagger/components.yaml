@@ -1,0 +1,35 @@
+components:
+  Register:
+    type: object
+    required:
+      - username
+      - password
+      - email
+    properties:
+      username:
+        $ref: "#/parameters/username"
+      password:
+        $ref: "#/parameters/password"
+      email:
+        $ref: "#/parameters/email"
+      name:
+        $ref: "#/parameters/name"
+
+  Login:
+    type: object
+    required:
+      - email
+      - password
+    properties:
+      email:
+        $ref: "#/parameters/email"
+      password:
+        $ref: "#/parameters/password"
+
+  Error:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        $ref: "#/parameters/error"

@@ -1,51 +1,30 @@
 components:
   schemas:
     Register:
-      type: object
-      required:
-        - username
-        - password
-        - email
-      properties:
-        username:
-          type: string
-          description: username to login with
-        password:
-          type: string
-          description: a strong password
-        email:
-          type: string
-          description: a unique email address
+      $ref: "#/components/Register"
       example:
+        name: "John Doe"
         username: username
         password: password
         email: email@personal.com
+
     Login:
-      type: object
-      required:
-        - username
-        - password
-      properties:
-        username:
-          type: string
-          description: username to login with
-        password:
-          type: string
-          description: a strong password
+      $ref: "#/components/Login"
       example:
-        username: username
+        email: email@personal.com
         password: password
+
     Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Indicates the error message
+      $ref: "#/components/Error"
       example:
         error: Some error occured
+
     AuthResponse:
       type: object
       properties:
         message:
           type: string
           description: Message of execution
+        token:
+          type: string
+          description: JWT token for later access

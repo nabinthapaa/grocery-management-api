@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
+import { ParamsDictionary } from "express-serve-static-core";
+import { ParsedQs } from "qs";
 import { z } from "zod";
-import { validate } from "../utils/schemaValidator";
+import { validate } from "../utils";
 
 export function validateRequestBody<T>(schema: z.ZodSchema) {
   return function (req: Request, _: Response, next: NextFunction) {
@@ -15,7 +17,9 @@ export function validateRequestBody<T>(schema: z.ZodSchema) {
   };
 }
 
-export function validateRequestParams<T>(schema: z.ZodSchema) {
+export function validateRequestParams<T extends ParamsDictionary>(
+  schema: z.ZodSchema,
+) {
   return function (req: Request, _: Response, next: NextFunction) {
     const { success, errors, data } = validate<T>(schema, req.params);
     if (!success && errors) {
@@ -29,7 +33,7 @@ export function validateRequestParams<T>(schema: z.ZodSchema) {
   };
 }
 
-export function validateRequestQuery<T>(schema: z.ZodSchema) {
+export function validateRequestQuery<T extends ParsedQs>(schema: z.ZodSchema) {
   return function (req: Request, _: Response, next: NextFunction) {
     const { success, errors, data } = validate<T>(schema, req.query);
     if (!success && errors) {

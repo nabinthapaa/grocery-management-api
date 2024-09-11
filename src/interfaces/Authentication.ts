@@ -6,4 +6,5 @@ export type LoginData = z.infer<typeof AuthenticationSchema.LoginSchema>;
 
 export type AuthResponse = {
   message: string;
+  token?: string;
 };

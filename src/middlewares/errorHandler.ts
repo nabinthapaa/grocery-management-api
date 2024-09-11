@@ -1,7 +1,6 @@
-import { Request, NextFunction, Response } from "express";
-import { BaseError } from "../errors/BaseError";
-import { httpStatusCode } from "../utils/httpStatusCode";
-import loggerWithNameSpace from "../utils/logger";
+import { NextFunction, Request, Response } from "express";
+import { BaseError } from "../errors";
+import { httpStatusCode, loggerWithNameSpace } from "../utils";
 
 const logger = loggerWithNameSpace("Error Handler");
 

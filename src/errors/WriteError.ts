@@ -1,4 +1,4 @@
-import { httpStatusCode } from "../utils/httpStatusCode";
+import { httpStatusCode } from "../utils";
 import { BaseError } from "./BaseError";
 
 export class WriteError extends BaseError {

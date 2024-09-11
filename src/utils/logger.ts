@@ -1,21 +1,21 @@
-import path from "node:path";
-import winston, { format } from "winston";
+import path from "path";
+import * as winston from "winston";
 
-const logFormat = format.printf((info) => {
+const logFormat = winston.format.printf((info) => {
   const formattedNamespace = info.metadata.namespace || "";
 
   return `${info.metadata.timestamp} [${info.level}] [${formattedNamespace}]: ${info.message}`;
 });
 
 const logger = winston.createLogger({
-  format: format.combine(
-    format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-    format.metadata(),
+  format: winston.format.combine(
+    winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+    winston.format.metadata(),
     logFormat,
   ),
   transports: [
     new winston.transports.Console({
-      format: format.colorize({
+      format: winston.format.colorize({
         all: true,
       }),
     }),
@@ -36,8 +36,6 @@ const logger = winston.createLogger({
   ],
 });
 
-const loggerWithNameSpace = function (namespace: string) {
+export const loggerWithNameSpace = function (namespace: string) {
   return logger.child({ namespace });
 };
-
-export default loggerWithNameSpace;

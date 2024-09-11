@@ -1,25 +1,27 @@
 import { Request, Response } from "express";
-import { AuthenticationService } from "../services";
 import { AuthResponse, LoginData, RegisterData } from "../interfaces";
+import { AuthenticationService } from "../services";
+import { httpStatusCode } from "../utils";
 
-export function register(
+export async function register(
   req: Request<any, AuthResponse, RegisterData>,
   res: Response<AuthResponse>,
 ) {
   const { body } = req;
-  AuthenticationService.createUser({ ...body });
-  return res.status(200).json({
+  await AuthenticationService.register({ ...body });
+  return res.status(httpStatusCode.OK).json({
     message: "User created Successfully",
   });
 }
 
-export function login(
+export async function login(
   req: Request<any, AuthResponse, LoginData>,
   res: Response<AuthResponse>,
 ) {
   const { body } = req;
-  AuthenticationService.login({ ...body });
-  return res.status(200).json({
+  const data = await AuthenticationService.login({ ...body });
+  return res.status(httpStatusCode.OK).json({
     message: "Logged in Successfully",
+    token: data.token,
   });
 }

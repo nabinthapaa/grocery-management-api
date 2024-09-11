@@ -1,2 +1,2 @@
-export * as AuthenticationService from "./authentication";
-export * as UserService from "./User";
+export * from "./authentication";
+export * from "./User";

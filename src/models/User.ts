@@ -1,46 +1,56 @@
-import { Errors, RegisterData, Result } from "../interfaces";
+import { RegisterData } from "../interfaces";
+import { BaseModel } from "./BaseModel";
 
-let users: RegisterData[] = [];
-
-export class UserModel {
-  static createUser(user: RegisterData): Result<void> {
-    // get user by id
-    const userWithEmail = users.find(({ email }) => email === user.email);
-    const userWithUsername = users.find(
-      ({ username }) => username === user.username,
-    );
-    if (userWithUsername || userWithEmail) {
-      return {
-        error: "User with email or username already exists",
-      };
-    } else {
-      console.log(users);
-      users = [...users, user];
-      return { error: null };
-    }
+export class UserModel extends BaseModel {
+  static async createUser(user: RegisterData) {
+    return await UserModel.queryBuilder()
+      .table("users")
+      .insert({ ...user });
   }
 
-  static updateUser(): void {}
-
-  static deleteUser(): void {}
-
-  static getUser(): void {}
-
-  static getUserByUsername(username: string): Result<RegisterData> {
-    const userWithUsername = users.find((user) => user.username === username);
-    if (userWithUsername) {
-      return {
-        data: {
-          username: userWithUsername.username,
-          email: userWithUsername.email,
-          password: userWithUsername.password,
-        },
-        error: null,
-      };
-    } else {
-      return { error: "User with specified username not found" };
-    }
+  static async updateUser(userId: number, userInfo: Partial<RegisterData>) {
+    return await UserModel.queryBuilder()
+      .table("users")
+      .where({ id: userId })
+      .update(userInfo);
   }
 
-  static getAllUser(): void {}
+  static async deleteUser(userId: number) {
+    return await UserModel.queryBuilder()
+      .table("users")
+      .where({ id: userId })
+      .del();
+  }
+
+  static async getUser(userId: number) {
+    const data = await UserModel.queryBuilder()
+      .table("users")
+      .where({ id: userId })
+      .first<RegisterData>();
+
+    return data;
+  }
+
+  static async getUserByUsername(username: string) {
+    const data = await UserModel.queryBuilder()
+      .table("users")
+      .where({ username })
+      .first<RegisterData>();
+
+    return data;
+  }
+
+  static async getUserByEmail(email: string) {
+    const data = await UserModel.queryBuilder()
+      .table("users")
+      .where({ email })
+      .first<RegisterData>();
+
+    return data;
+  }
+
+  static async getAllUser() {
+    const data = await UserModel.queryBuilder().table<RegisterData>("users");
+    return data;
+  }
 }

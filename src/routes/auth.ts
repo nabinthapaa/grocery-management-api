@@ -19,6 +19,11 @@ const router = Router();
  *        application/json:
  *          schema:
  *            $ref: '#/components/schemas/Register'
+ *          example:
+ *            name: "John Doe"
+ *            username: username
+ *            password: password
+ *            email: email@personal.com
  *    responses:
  *      200:
  *        description: Successfully created user
@@ -55,6 +60,9 @@ router.post(
  *        application/json:
  *          schema:
  *            $ref: '#/components/schemas/Login'
+ *          example:
+ *            email: email@personal.com
+ *            password: password
  *    responses:
  *      200:
  *        description: Successfully created user
@@ -63,7 +71,8 @@ router.post(
  *            schema:
  *              $ref: '#/components/schemas/AuthResponse'
  *            example:
- *              error: Login Successfull
+ *              message: Login Successfull
+ *              token: JWT token
  *      500:
  *        description: Error during logging user in
  *        content:

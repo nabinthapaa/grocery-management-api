@@ -19,3 +19,11 @@ export type Result<T> = {
   error: string | null;
   [key: string]: T | string | null;
 };
+
+export interface IItem {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+}
